@@ -51,7 +51,7 @@ int main()
 		} else {
 			finalstring[i] = input[c];
 		}
-	i++;
+		i++;
 	}
 	
 	//enforce bounds
