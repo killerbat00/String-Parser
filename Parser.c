@@ -16,23 +16,25 @@
 #include <string.h>
 #include <stdlib.h>
 
+#define LEN_MAX 128
+#define FINALSTRING_LEN_MAX 81
+
+
 int main() 
 {
 	// declarations
-	unsigned int len_max = 128;
-	unsigned int finalstring_len_max = 81;
-	unsigned int current_size = len_max;
+	unsigned int current_size = LEN_MAX;
 	unsigned int i = 0;
 	int c;
 	
-	char *input = malloc(len_max);
-	char *finalstring = malloc(finalstring_len_max);	
+	char *input = malloc(LEN_MAX);
+	char *finalstring = malloc(FINALSTRING_LEN_MAX);	
 
 	//read input, resizing as necessary
 	while ((c = getchar()) && c != EOF) {
 		input[i++]=(char)c;
 		if(i == current_size) {
-			current_size = i+len_max;
+			current_size = i+LEN_MAX;
 			input = realloc(input, current_size);
 		}
 	}
@@ -40,7 +42,7 @@ int main()
 	
 	//make necessary changes to the input
 	i = 0;
-	for(c = 0; c < strlen(input) && i < finalstring_len_max-1; c++) {
+	for(c = 0; c < strlen(input) && i < FINALSTRING_LEN_MAX-1; c++) {
 		if(input[c] == (int) '*' && input[c+1] == (int) '*') {
 			finalstring[i] = '^';
 			c +=1;
@@ -53,11 +55,11 @@ int main()
 	}
 	
 	//enforce bounds
-	if(strlen(finalstring) < finalstring_len_max-1 || strlen(input) < finalstring_len_max-1) {
+	if(strlen(finalstring) < FINALSTRING_LEN_MAX-1 || strlen(input) < FINALSTRING_LEN_MAX-1) {
 		return 0;
 	}
 
 	printf("%s\n", finalstring);
-	input = NULL;
+	free(input);
 	return 0;
 }
