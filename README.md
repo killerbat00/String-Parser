@@ -1,7 +1,7 @@
 String-Parser
 =============
 
-COMP 530 - Homework 1
+Operating Systems Homework 1
 
 
 This C program reads in lines of characters from standard input (i.e., the keyboard) and writes them as 80 character lines to standard output (i.e., the “screen”) with the following changes:
